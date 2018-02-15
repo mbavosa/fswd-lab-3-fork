@@ -1,12 +1,10 @@
 //- views/index.pug
-html
-    head
-        title Hello world!
+extends ./layout
 
-    body
-        h1 Hello world!
-        p This is coming from the #[code views/index.pug] file
+block body
+    h1 Hello world!
+    p This is coming from the #[code views/index.pug] file
 
-        form(action="/name-form" method="post")
-            input(type="text" name="name")
-            input(type="submit" value="Submit")
+    form(action="/tasks" method="post")
+        input(type="text" name="name")
+        input(type="submit" value="Submit")

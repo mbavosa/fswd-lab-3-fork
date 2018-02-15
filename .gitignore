@@ -7,3 +7,6 @@ public/*.svg
 public/*.ttf
 public/*.eot
 .nyc_output
+
+test.db
+development.db
