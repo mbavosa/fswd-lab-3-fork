@@ -1,11 +1,13 @@
 sudo: false
 dist: trusty
-
 language: node_js
 node_js:
-    - "7"
-    - "stable"
-
+- stable
 cache:
   directories:
-      - node_modules
+  - node_modules
+deploy:
+  provider: heroku
+  app: gentle-wildwood-54041
+  api_key:
+    secure: KcWOduaoIRcc0Du4m6nmmnq5tqdJvYESwiCPMMpc5mvb1WIY2uKY3UvnrzDOZePMO55PiyTZRHVjl3pFLspcs9r2lyMkznRHp6IxQUKMSO279W0F6icZpGAHwScC9ZN0fO+oDTT4nXz5lYN9l6rWP81dYI3Wuvoq09w2Sr4+OwCnL3Y/hEqkBTFprUs1VqWMp3jI7FA4x71307QoevsG3DwekaF0gEqO6Xdpz4FE4VBU1JVf9DABWscpgRBELLgAbWmmbgLE0ymMe5v67rXhnet/xgqmHD3J8xhCrRPtb+YWNH2M+VIBHuT7b+IQWdbTQI0qnQJq2YjQu9ECZNVmSUwPq1nsww2wHUq0VE8dpWrCPzJgIapaoEVuO35n5pLYnUGwAEgeZ+heRTwRjst1zyjDU+Oi8yp/sLx+a9wBKqdIzIEZIGvcqYWxxQjg9SbMoehcR/GQ8nNDmwr/uK000ZTALeKk+iHmN/U4PPM4gQpmUcwTg+UpwnQp3NtyxcJb0VO8i/vxE1W3NbXgzr04NgAwMLxUV8LKKzym/vSCioinhujeAIrFQdiNqWAziHsLXG4ZD7VQtwfDLb40JkMuv0jk5UzqZgL+ll4skKLCb1d9HwEhOteyQUFFKgKDQjf1Bw3fBMHnr5+Yy74tEXUxIWgXEtWuwPMsvBkLRrdJHwI=
