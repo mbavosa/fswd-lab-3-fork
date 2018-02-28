@@ -42,24 +42,26 @@ describe('server', function() {
                 .expect(200);
         });
 
-        // it('should register a user', function() {
-        //     return app
-        //         .post('/users/register')
-        //         .type('form')
-        //         .send({
-        //             username: 'MyUsername',
-        //             password: 'MyPassword',
-        //             password_confirm: 'MyPassword',
-        //             email: 'somebody@example.com'
-        //         })
-        //         .expect(302)
-        //         .expect('Location', '/users/welcome')
-        //         .then(function() {
-        //             return app
-        //                 .get('/users/welcome')
-        //                 .expect(/Hi MyUsername!/);
-        //         });
-        // });
+        it('should register a user', function() {
+            return app
+                .post('/users/register')
+                .type('form')
+                .send({
+                    username: 'MyUsername',
+                    password: 'MyPassword',
+                    password_confirm: 'MyPassword',
+                    email: 'somebody@example.com'
+                })
+                .expect(302)
+                .expect('Location', '/users/welcome')
+                .then(function(response) {
+                    let cookies = response.headers['set-cookie'][0].split(',').map(item => item.split(';')[0]).join(';');
+                    return app
+                        .get('/users/welcome')
+                        .set('Cookie', cookies)
+                        .expect(/Hi MyUsername!/);
+                });
+        });
 
         // it('should warn if passwords do not match', function() {
         //     return app
