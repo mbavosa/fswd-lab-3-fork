@@ -31,8 +31,10 @@ var app = new Vue({
     },
     methods: {
         addNewTask: function(newTask) {
-            alert("Added task " + newTask);
-            this.tasks.push(newTask);
+            this.$http.post('/tasks', { name: newTask })
+                .then(function(response) {
+                    this.tasks.push(response.body);
+                });
         }
     },
     created: function() {
