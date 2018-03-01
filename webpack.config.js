@@ -2,6 +2,7 @@ var path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './app/index.js',
   output: {
       path: path.join(__dirname, 'public'),

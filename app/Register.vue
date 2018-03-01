@@ -27,7 +27,7 @@ export default {
         }
     },
     computed: {
-        passswordsNoMatch: function() {
+        passwordsNoMatch: function() {
             return this.password !== this.password_confirm;
         }
     },
