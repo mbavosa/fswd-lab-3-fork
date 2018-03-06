@@ -12,7 +12,7 @@
             <label for="password_confirm">Password (confirm)</label>
             <input class="form-control" type="password" name="password_confirm" v-model="password_confirm">
         </div>
-        <p v-if="passwordsNoMatch">Passwords match.</p>
+        <p v-if="passwordsNoMatch">Passwords do not match.</p>
         <button class="btn btn-primary" :disabled="passwordsNoMatch" @click="sendRegistration">Register</button>
     </div>
 </template>
@@ -33,7 +33,14 @@ export default {
     },
     methods: {
         sendRegistration: function() {
-            alert('Sending registration!');
+            this.$http.post('/users/register', {
+                username: this.username,
+                password: this.password,
+                password_confirm: this.password_confirm
+            }).then(response => {
+                this.$router.push('/welcome');
+            })
+
         }
     }
 };

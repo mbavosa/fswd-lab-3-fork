@@ -2,6 +2,7 @@ var path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
+  devtool: 'inline-source-map',
   mode: 'development',
   entry: './app/index.js',
   output: {
@@ -35,7 +36,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+      'vue$': 'vue/dist/vue.esm.js'
     }
   }
 };

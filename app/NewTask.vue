@@ -13,7 +13,7 @@ export default {
         };
     },
     methods: {
-        addNewTask: function() {
+        addNewTask() {
             this.$emit('addtask', this.newTask);
             this.newTask = '';
         }
