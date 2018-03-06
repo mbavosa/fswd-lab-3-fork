@@ -1,15 +1,20 @@
 <template>
-    <ul>
-        <task v-for="task in tasks" :task="task" :key="task.id" @deletedMyself='taskDeleted'></task>
-    </ul>
+    <div>
+        <ul>
+            <task v-for="task in tasks" :task="task" :key="task.id" @deletedMyself='taskDeleted'></task>
+        </ul>
+        <new-task></new-task>
+    </div>
 </template>
 
 <script>
+import NewTask from './NewTask.vue';
 import Task from './Task.vue';
 
 export default {
     components: {
-        Task
+        Task,
+        NewTask
     },
     computed: {
         tasks() {
