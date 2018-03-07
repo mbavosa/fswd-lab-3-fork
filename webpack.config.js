@@ -3,6 +3,10 @@ var path = require('path'),
 
 module.exports = {
   devtool: 'inline-source-map',
+<<<<<<< HEAD
+=======
+  mode: 'development',
+>>>>>>> upstream/master
   entry: './app/index.js',
   output: {
       path: path.join(__dirname, 'public'),

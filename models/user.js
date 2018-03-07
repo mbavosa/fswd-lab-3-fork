@@ -7,11 +7,20 @@ module.exports = (sequelize, DataTypes) => {
       set(password) {
         this.setDataValue('password', password.split('').reverse().join(''));
       }
+<<<<<<< HEAD
   }, 
   email: {
     type: DataTypes.STRING,
     validate: {
       isEmail: true
+=======
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true
+      }
+>>>>>>> upstream/master
     }
    }
   }, {

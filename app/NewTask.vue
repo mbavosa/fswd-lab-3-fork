@@ -13,13 +13,25 @@ export default {
         };
     },
     methods: {
+<<<<<<< HEAD
         addNewTask: function() {
+=======
+        addNewTask() {
+>>>>>>> upstream/master
             this.$emit('addtask', this.newTask);
             this.newTask = '';
         }
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
 };
 </script>
 
 <style>
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> upstream/master
