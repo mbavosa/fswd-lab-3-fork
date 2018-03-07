@@ -47,7 +47,7 @@ var store = new Vuex.Store({
     },
     actions: {
         getTasks({ commit }) {
-            Vue.axios.get('/tasks')
+            return Vue.axios.get('/tasks')
                 .then(response => {
                     commit('setTasks', response.data);
                 })
@@ -68,9 +68,14 @@ var store = new Vuex.Store({
         // }
     },
     getters: {
-        getTaskById: (state) => (id) => {
-            console.log('searching tasks for ' + id);
-            return state.tasks.find(task => task.id === id);
+        taskCount(state) {
+            return state.tasks.length;
+        },
+        getTaskById(state) {
+            return id => {
+
+                return state.tasks.find(task => task.id === id);
+            }
         }
     }
 });
@@ -90,7 +95,7 @@ var app = new Vue({
         tasks: [],
         user: null
     },
-    created() {
+    beforeCreate() {
         this.$store.dispatch('getTasks');
     },
     methods: {
