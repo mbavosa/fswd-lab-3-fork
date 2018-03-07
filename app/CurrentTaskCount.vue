@@ -6,7 +6,7 @@
 export default {
     computed: {
         numberOfTasks() {
-            return this.$store.state.tasks.length;
+            return this.$store.getters.taskCount;
         }
     }
 };
