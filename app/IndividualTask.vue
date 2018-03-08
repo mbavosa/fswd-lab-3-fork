@@ -1,5 +1,5 @@
 <template>
-    <p v-if="task">Looking at task {{ id }}: {{ task && task.name }}</p>
+    <p v-if="task">Looking at task {{ id }}: {{ name }}</p>
 </template>
 
 <script>
@@ -11,6 +11,9 @@ export default {
         },
         taskId() {
             return parseInt(this.id)
+        },
+        name() {
+            return this.task ? this.task.name : '';
         }
     }
 };

@@ -1,9 +1,9 @@
 <template>
     <div>
-        <ul>
-            <task v-for="task in tasks" :task="task" :key="task.id" @deletedMyself='taskDeleted'></task>
+        <ul class='list-group list-group-flush'>
+            <task v-for="task in tasks" :task="task" :key="task.id" @deletedMyself='taskDeleted'></task>            
         </ul>
-        <new-task></new-task>
+        <new-task class='pt-3'></new-task>
     </div>
 </template>
 

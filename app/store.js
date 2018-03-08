@@ -16,6 +16,13 @@ export default new Vuex.Store({
         setTasks(state, tasks) {
             state.tasks = tasks;
         },
+        addTask(state, task) {
+            state.tasks.push(task)
+        },
+        removeTask(state, task) {
+            state.tasks = state.tasks.filter(t => t.id !== task.id);
+        },
+
         setLoggedIn(state, isLoggedIn) {
             state.isLoggedIn = isLoggedIn;
         }
@@ -38,9 +45,26 @@ export default new Vuex.Store({
                     commit('setLoggedIn', response.data)
                 })
         },
-        // addNewTask({ state, commit }, newTask) {
-        //     commit('setTasks', state.tasks.concat([newTaskFromServer]));
-        // }
+
+        addNewTask({ commit }, name) {
+            // return new Promise((resolve, reject) => {
+                return Vue.axios.post('/tasks', { name })
+                    .then(response => {
+                        commit('addTask', response.data)
+
+                        // setTimeout(() => {
+                        //     resolve()
+                        // }, 10000);
+                    });
+            // });
+        },
+
+        deleteTask({ state, commit }, task) {
+            return Vue.axios.delete(`/tasks/${task.id}`)
+                .then(response => {
+                    commit('removeTask', task);
+                });
+        }
     },
     getters: {
         taskCount(state) {
@@ -48,7 +72,6 @@ export default new Vuex.Store({
         },
         getTaskById(state) {
             return id => {
-
                 return state.tasks.find(task => task.id === id);
             }
         }
