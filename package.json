@@ -12,7 +12,8 @@
     "coverage": "opn coverage/lcov-report/index.html",
     "sequelize": "sequelize",
     "heroku-postbuild": "sequelize db:migrate",
-    "webpack-dev": "webpack --mode development"
+    "webpack-dev": "webpack --mode development",
+    "nightwatch": "nightwatch --env chrome"
   },
   "keywords": [],
   "author": "",
