@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form @submit.prevent="sendRegistration">
         <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" name="username" v-model="username">
@@ -13,8 +13,8 @@
             <input class="form-control" type="password" name="password_confirm" v-model="password_confirm">
         </div>
         <p v-if="passwordsNoMatch">Passwords do not match.</p>
-        <button class="btn btn-primary" :disabled="passwordsNoMatch" @click="sendRegistration">Register</button>
-    </div>
+        <button class="btn btn-primary" :disabled="passwordsNoMatch">Register</button>
+    </form>
 </template>
 
 <script>
