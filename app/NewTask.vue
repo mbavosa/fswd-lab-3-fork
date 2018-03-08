@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="addNewTask">
         <div class='form-group'>
-            <input class="form-control" type="text" v-model="newTask" placeholder="New task goes here" :disabled='isAddingTask'>
+            <input name="newTask" class="form-control" type="text" v-model="newTask" placeholder="New task goes here" :disabled='isAddingTask'>
         </div>
         <button class="btn btn-danger" :disabled='isAddingTask'>
             <span v-show='isAddingTask'><icon name="spinner" pulse></icon>&nbsp;</span>Add task</button>
