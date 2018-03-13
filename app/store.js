@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         myValue: 15,
         tasks: [],
-        isLoggedIn: false
+        isLoggedIn: false,
+        user: false
     },
     mutations: {
         incrementValue(state) {
@@ -25,24 +26,49 @@ export default new Vuex.Store({
 
         setLoggedIn(state, isLoggedIn) {
             state.isLoggedIn = isLoggedIn;
+        },
+        setUser(state, user) {
+            state.user = user;
         }
     },
     actions: {
-        getTasks({ commit }) {
-            return Vue.axios.get('/tasks')
-                .then(response => {
-                    commit('setTasks', response.data);
-                })
+        start({ dispatch }) {
+            return dispatch('checkLogin')
+        },
+        getTasks({ commit, state }) {
+            if (!state.tasks.length) {
+                return Vue.axios.get('/tasks')
+                    .then(response => {
+                        commit('setTasks', response.data);
+                    })
+            }
         },
         asyncIncrementValue({ commit }) {
             setTimeout(() => {
                 commit('incrementValue');
             }, 2000);
         },
-        checkLogin({ commit }) {
-            Vue.axios.get('/users/isLoggedIn')
+        checkLogin({ state, commit }) {
+            return Vue.axios.get('/users/isLoggedIn')
                 .then(response => {
-                    commit('setLoggedIn', response.data)
+                    commit('setLoggedIn', true);
+                    commit('setUser', response.data);
+                })
+                .catch(response => {
+                    commit('setLoggedIn', false);
+                    commit('setUser', null);
+                })
+                .then(() => state.isLoggedIn);
+        },
+        login({ commit }, userInfo) {
+            return Vue.axios.post('/users/login', userInfo)
+                .then(response => {
+                    commit('setLoggedIn', true);
+                    commit('setUser', response.data);
+                })
+                .catch(response => {
+                    commit('setLoggedIn', false);
+                    commit('setUser', null);
                 })
         },
 

@@ -16,6 +16,9 @@ export default {
         Task,
         NewTask
     },
+    beforeCreate() {
+        this.$store.dispatch('getTasks');
+    },
     computed: {
         tasks() {
             return this.$store.state.tasks;
