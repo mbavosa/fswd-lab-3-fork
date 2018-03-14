@@ -3,6 +3,7 @@
         <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" name="username" v-model="username">
+            <small class="form-text text-info" v-show="checkingUsername">Checking username...</small>
             <small class="form-text text-danger" v-if="!usernameAvailable">Username is already taken.</small>
         </div>
         <div class="form-group">
@@ -21,7 +22,6 @@
 <script>
 import Vue from 'vue';
 import { debounce } from 'lodash';
-
 export default {
     data: function () {
         return {
@@ -54,7 +54,6 @@ export default {
         //     this.$http.post('/users/canRegister', { username: newVal })
         //         .then(response => this.usernameAvailable = !!response.data);
         // }
-
         // V3
         username: debounce(function(newVal, oldVal) {
             this.checkingUsername = true;
@@ -74,7 +73,6 @@ export default {
                 // this.$store.dispatch('checkLogin')
                 this.$router.push('/welcome');
             })
-
         }
     }
 };
