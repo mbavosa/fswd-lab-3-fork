@@ -8,6 +8,8 @@ div#app
                 router-link.nav-link(to='/register') Register
             li.nav-item
                 router-link.nav-link(to='/tasks') Tasks
+            li.nav-item
+                router-link.nav-link(to='/marathonmap') Marathon Map
     div.container
         div.row
             router-view.col-12

@@ -4,6 +4,8 @@
             <task v-for="task in tasks" :task="task" :key="task.id" @deletedMyself='taskDeleted'></task>            
         </ul>
         <new-task class='pt-3'></new-task>
+         <img src="/img/Map_of_USA.svg">
+         
     </div>
 </template>
 
