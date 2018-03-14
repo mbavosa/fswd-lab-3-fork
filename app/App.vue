@@ -1,29 +1,44 @@
 <template lang="pug">
 div#app
-    //- div.container
     nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-2
         router-link.navbar-brand(to='/') FSWD
         ul.navbar-nav
-            li.nav-item
-                router-link.nav-link(to='/register') Register
-            li.nav-item
+            li.nav-item(v-show='isLoggedIn')
                 router-link.nav-link(to='/tasks') Tasks
+<<<<<<< HEAD
             li.nav-item
                 router-link.nav-link(to='/marathonmap') Marathon Map
+=======
+            li.nav-item(v-show='!isLoggedIn')
+                router-link.nav-link(to='/login') Login
+            li.nav-item(v-show='!user')
+                router-link.nav-link(to='/register') Register
+            li.nav-item(v-show='isLoggedin')
+                router-link.nav-link(to='/logout') Logout
+            span.navbar-text(v-show='isLoggedIn') Hi, {{ username }}!
+
+>>>>>>> upstream/master
     div.container
         div.row
             router-view.col-12
 </template>
 
 <script>
-import StoreDemo from './StoreDemo.vue';
-import CurrentTaskCount from './CurrentTaskCount.vue';
+import { mapState } from 'vuex';
 
 export default {
-    components: {
-        StoreDemo,
-        CurrentTaskCount
-    }
+    computed: mapState({
+        isLoggedIn: 'isLoggedIn',
+        user: 'user',
+        username: state => state.user ? state.user.username : ''
+    })
+    // computed: mapState(['isLoggedIn', 'user']),
+    // computed: {
+    //     isLoggedIn() { return this.$store.state.isLoggedIn || false; },
+    //     user()       { return this.$store.state.user || null;        },
+    //     username()   { return this.user ? this.user.username : '';   },
+    //     ...mapState([ 'isLoggedIn', 'user' ]),
+    // },
 }
 </script>
 

@@ -19,26 +19,16 @@ var app = new Vue({
     components: {
         App
     },
-    data: {
-        tasks: [],
-        user: null
+    template: '<App/>',
+    mounted() {
+        this.$store.dispatch('start')
+            .then(isLoggedIn => {
+                if (isLoggedIn) {
+                    this.$router.replace('/tasks');
+                } else {
+                    this.$router.replace({ name: 'login' });
+                }
+            })
     },
-    beforeCreate() {
-        this.$store.dispatch('getTasks');
-    },
-    methods: {
-        addNewTask: function(newTask) {
-            this.$http.post('/tasks', { name: newTask })
-                .then((response) => {
-                    this.tasks.push(response.data);
-                });
-        },
-        registerUser: function(details) {
-            this.$http.post('/users/register', details)
-                .then((response) => {
-                    this.user = response.data;
-                });
-        }
-    },
-    template: '<App/>'
+
 });
